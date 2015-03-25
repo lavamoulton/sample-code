@@ -2,10 +2,11 @@
 'Daniel Moulton
 '3/24/15
 'Implementation of the mergesort sorting algorithm in python.
-'Does not utilize input due to focus on implementing the
-'actual working algorithm.
+'Utilizes a series of random numbers as the initial input
 'Uses a top down approach to recursively sort the original list and output the final result.
 '''
+
+from random import randrange
 
 def mergeSort(original_list):
     #initializes recursive sorting function
@@ -53,8 +54,18 @@ def merge(left_list, right_list):
             del right_list[0]
     return sorted_list       
 
+def random_list(number):
+    original_list = []
+    for x in range(0, COUNT+1):
+        original_list.append(randrange(MIN, MAX+1))
+    return original_list
+    
 #input list
-original_list = [4, 5, 10, 5, 2, 4, 7, 7, 15, 18, 3, 5, 6, 19, 17, 20, 8]
-print(mergeSort(original_list))       
+MIN = 1
+MAX = 100
+COUNT = 20
+original_list = random_list(COUNT)
+print('Original: ' + str(original_list))
+print('Sorted: ' + str(mergeSort(original_list)))       
 
         
